@@ -7,6 +7,10 @@ from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.chrome.options import Options
+
+op = Options()
+op.add_extension('AdBlock-—-best-ad-blocker.crx')
 
 #Variables
 bot_token = "5563831970:AAGBSz1vVCvsfi4unwZkRGBVvbW2-Jl5k9k"
@@ -15,7 +19,7 @@ paswd = "Hack@avi1"
 
 #Objects
 bot = telebot.TeleBot(bot_token)
-browser = webdriver.Chrome('./chromedriver')
+browser = webdriver.Chrome('./chromedriver',options=op)
 
 
 #MessageHandling
