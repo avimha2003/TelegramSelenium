@@ -20,11 +20,17 @@ paswd = "Hack@avi1"
 #Objects
 bot = telebot.TeleBot(bot_token)
 browser = webdriver.Chrome('./chromedriver',options=op)
+time.sleep(5)
+browser.switch_to.window(browser.window_handles[1])
+browser.close()
 
 
 #MessageHandling
 @bot.message_handler(commands=['login', 'help'])
 def send_welcome(message):
+
+    browser.switch_to.window(browser.window_handles[0])
+
     bot.reply_to(message, "Logging In!")
     browser.get("https://dashboard.celltracker.io/login")
     mfield = browser.find_element(By.ID, 'email')
