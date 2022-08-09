@@ -62,14 +62,49 @@ def send_welcome(message):
 
 wait = WebDriverWait(browser, 5)
 
+#SmS
 @bot.message_handler(commands=['sms'])
 def sms(message):
     browser.find_element(By.XPATH, '// *[ @ id = "sidebarMenu"] / div / ul / li[3] / a / div / span[2]').click()
-    time.sleep(2)
-    try:
-        wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="dismiss-button"]/div/span' ))).click()  #'//*[@id="dismiss-button"]/div/svg'
-    except TimeoutException:
-        pass
+    bot.send_message(message.chat.id, "Clicked SmS")
+
+#CallsLogs
+@bot.message_handler(commands=['callslogs'])
+def calls(message):
+    browser.find_element(By.XPATH, '//*[@id="sidebarMenu"]/div/ul/li[4]/a/div/span[2]').click()
+    bot.send_message(message.chat.id, "Clicked callslogs")
+
+
+#CallRec
+@bot.message_handler(commands=['callrec'])
+def callrec(message):
+    browser.find_element(By.XPATH, '//*[@id="sidebarMenu"]/div/ul/li[5]/a/div/span[2]').click()
+    bot.send_message(message.chat.id, "Clicked callrec")
+
+#Location
+@bot.message_handler(commands=['location'])
+def location(message):
+    browser.find_element(By.XPATH, '//*[@id="sidebarMenu"]/div/ul/li[6]/a/div/span[2]').click()
+    bot.send_message(message.chat.id, "Clicked location")
+
+
+ #Contacts
+@bot.message_handler(commands=['contacts'])
+def Contacts(message):
+    browser.find_element(By.XPATH, '//*[@id="sidebarMenu"]/div/ul/li[7]/a/div').click()
+    bot.send_message(message.chat.id, "Clicked Contacts")
+
+ #WhatsApp
+@bot.message_handler(commands=['whatsapp'])
+def whatsapp(message):
+    browser.find_element(By.XPATH, '//*[@id="sidebarMenu"]/div/ul/li[8]/a').click()
+    bot.send_message(message.chat.id, "Clicked WhatsApp")
+
+
+@bot.message_handler(commands=['exit'])
+def exit(message):
+    browser.close()
+
 
 
 
